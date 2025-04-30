@@ -1,0 +1,5 @@
+D:/programação-2s/project/Programming-Project/cmake-build-debug/CMakeFiles/runscrim.dir
+D:/programação-2s/project/Programming-Project/cmake-build-debug/CMakeFiles/tester.dir
+D:/programação-2s/project/Programming-Project/cmake-build-debug/CMakeFiles/delivery.dir
+D:/programação-2s/project/Programming-Project/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/programação-2s/project/Programming-Project/cmake-build-debug/CMakeFiles/rebuild_cache.dir

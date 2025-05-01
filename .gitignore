@@ -1,2 +1,5 @@
 /build
 /.idea
+/output
+/cmake-build-debug
+test_log.txt

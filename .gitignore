@@ -3,3 +3,5 @@
 /output
 /cmake-build-debug
 test_log.txt
+cmake-build-debug/.ninja_log
+cmake-build-debug/Testing/Temporary/LastTest.log

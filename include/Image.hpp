@@ -8,6 +8,8 @@ namespace prog {
     class Image {
     private:
 		// TODO: define private fields for image state
+        int w_, h_;
+        Color **matrix; // matrix[w_, h_]
     
 	public:
         Image(int w, int h, const Color &fill = {255, 255, 255});

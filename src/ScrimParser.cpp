@@ -6,6 +6,7 @@
 #include "Command/Blank.hpp"
 #include "Command/Save.hpp"
 #include "Command/Open.hpp"
+#include "Command/Invert.hpp"
 #include "Logger.hpp"
 
 #include <fstream>
@@ -79,6 +80,10 @@ namespace prog {
             string filename;
             input >> filename;
             return new command::Open(filename);
+        }
+
+        if (command_name == "invert") {
+            return new command::Invert();
         }
 
         // TODO: implement cases for the new commands

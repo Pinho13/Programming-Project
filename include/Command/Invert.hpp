@@ -1,0 +1,24 @@
+#ifndef PROJECT_SAVE_HPP
+#define PROJECT_SAVE_HPP
+
+#include "Command.hpp"
+#include <string>
+
+namespace prog {
+    namespace command {
+        class Invert : public Command {
+        public:
+            Invert();
+
+            ~Invert();
+
+            Image *apply(Image *img) override;
+
+            std::string toString() const override;
+
+        };
+    }
+}
+
+
+#endif

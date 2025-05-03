@@ -8,6 +8,7 @@
 #include "Command/Open.hpp"
 #include "Command/Invert.hpp"
 #include "Command/ToGrayScale.hpp"
+#include "Command/Replace.hpp"
 #include "Logger.hpp"
 
 #include <fstream>
@@ -89,6 +90,12 @@ namespace prog {
 
         if (command_name == "to_gray_scale") {
             return new command::ToGrayScale();
+        }
+
+        if (command_name == "replace") {
+            Color color1, color2;
+            input >> color1 >> color2;
+            return new command::Replace(color1, color2);
         }
 
         // TODO: implement cases for the new commands

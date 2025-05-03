@@ -8,7 +8,11 @@
 #include "Command/Open.hpp"
 #include "Command/Invert.hpp"
 #include "Command/ToGrayScale.hpp"
+<<<<<<< Updated upstream
 #include "Command/Replace.hpp"
+=======
+#include "Command/Fill.hpp"
+>>>>>>> Stashed changes
 #include "Logger.hpp"
 
 #include <fstream>
@@ -92,10 +96,20 @@ namespace prog {
             return new command::ToGrayScale();
         }
 
+<<<<<<< Updated upstream
         if (command_name == "replace") {
             Color color1, color2;
             input >> color1 >> color2;
             return new command::Replace(color1, color2);
+=======
+        if (command_name == "fill")
+        {
+            // Read information for Fill command
+            int x, y, w, h;
+            Color filling_color;
+            input >> x >> y >> w >> h >> filling_color;
+            return new command::Fill(x, y, w, h, filling_color);
+>>>>>>> Stashed changes
         }
 
         // TODO: implement cases for the new commands

@@ -8,11 +8,8 @@
 #include "Command/Open.hpp"
 #include "Command/Invert.hpp"
 #include "Command/ToGrayScale.hpp"
-<<<<<<< Updated upstream
 #include "Command/Replace.hpp"
-=======
 #include "Command/Fill.hpp"
->>>>>>> Stashed changes
 #include "Logger.hpp"
 
 #include <fstream>

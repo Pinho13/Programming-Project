@@ -7,6 +7,7 @@
 #include "Command/Save.hpp"
 #include "Command/Open.hpp"
 #include "Command/Invert.hpp"
+#include "Command/ToGrayScale.hpp"
 #include "Logger.hpp"
 
 #include <fstream>
@@ -84,6 +85,10 @@ namespace prog {
 
         if (command_name == "invert") {
             return new command::Invert();
+        }
+
+        if (command_name == "to_gray_scale") {
+            return new command::ToGrayScale();
         }
 
         // TODO: implement cases for the new commands

@@ -12,7 +12,7 @@ namespace prog {
 
         Image *HMirror::apply(Image *img) {
 
-            // Copy original image to temporary created
+            // Switch pixels horizontally
             for (int i = 0; i < img->width() / 2; i++) {
                 for (int j = 0; j < img->height(); j++) {
                     Color &c_ = img->at(i, j);

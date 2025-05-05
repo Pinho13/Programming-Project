@@ -10,6 +10,7 @@
 #include "Command/ToGrayScale.hpp"
 #include "Command/Replace.hpp"
 #include "Command/Fill.hpp"
+#include "Command/HMirror.hpp"
 #include "Logger.hpp"
 
 #include <fstream>
@@ -105,6 +106,10 @@ namespace prog {
             Color filling_color;
             input >> x >> y >> w >> h >> filling_color;
             return new command::Fill(x, y, w, h, filling_color);
+        }
+
+        if (command_name == "h_mirror") {
+            return new command::HMirror();
         }
 
         // TODO: implement cases for the new commands

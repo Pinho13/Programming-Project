@@ -12,7 +12,7 @@ namespace prog {
 
         Image *Fill::apply(Image *img) {
 
-            // Cycles throught each rectangle pixel
+            // Cycles through each rectangle pixel
             for (int i = x; i < x + w; i++) {
                 for (int j = y; j < y + h; j++) {
                     // Fill in the rectangle with the desired color

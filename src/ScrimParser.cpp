@@ -12,6 +12,7 @@
 #include "Command/Fill.hpp"
 #include "Command/HMirror.hpp"
 #include "Command/VMirror.hpp"
+#include "Command/Add.hpp"
 #include "Logger.hpp"
 
 #include <fstream>
@@ -102,7 +103,7 @@ namespace prog {
         }
 
         if (command_name == "fill") {
-            // Read information for Fill command
+            // Read information for fill command
             int x, y, w, h;
             Color filling_color;
             input >> x >> y >> w >> h >> filling_color;
@@ -115,6 +116,15 @@ namespace prog {
 
         if (command_name == "v_mirror") {
             return new command::VMirror();
+        }
+
+        if (command_name == "add") {
+            // Read information for add command
+            string filename_;
+            Color neutral_color;
+            int x = 0, y = 0;
+            input >> filename_ >> neutral_color >> x >> y;
+            return new command::Add(filename_, neutral_color, x, y);
         }
 
         // TODO: implement cases for the new commands

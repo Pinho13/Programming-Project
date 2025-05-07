@@ -6,7 +6,7 @@
 namespace prog {
     namespace command {
 
-        Move::Move(int x, int y) : Command("move"), x_(x), y_(y) {}
+        Move::Move(int x, int y) : Command("Move"), x_(x), y_(y) {}
 
         Move::~Move() {};
 

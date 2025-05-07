@@ -6,7 +6,7 @@
 namespace prog {
 
     namespace command {
-        Fill::Fill(int x, int y, int w, int h,  Color& filling_color) : Command("fill"), x(x), y(y), w(w), h(h), filling_color(filling_color) {}
+        Fill::Fill(int x, int y, int w, int h,  Color& filling_color) : Command("Fill"), x(x), y(y), w(w), h(h), filling_color(filling_color) {}
 
         Fill::~Fill() {};
 

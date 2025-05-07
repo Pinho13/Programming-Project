@@ -7,7 +7,7 @@ namespace prog {
 
     namespace command {
         
-        Replace::Replace(Color color1, Color color2) : Command("replace") , color1_(color1), color2_(color2) {}
+        Replace::Replace(Color color1, Color color2) : Command("Replace") , color1_(color1), color2_(color2) {}
 
         Replace::~Replace() {};
 

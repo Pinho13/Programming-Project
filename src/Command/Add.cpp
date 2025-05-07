@@ -7,7 +7,7 @@
 namespace prog {
     namespace command {
 
-        Add::Add(std::string filename_, Color neutral_color, int x, int y) : Command("add"), filename_(filename_), neutral_color(neutral_color), x(x), y(y) {}
+        Add::Add(std::string filename_, Color neutral_color, int x, int y) : Command("Add"), filename_(filename_), neutral_color(neutral_color), x(x), y(y) {}
 
         Add::~Add() {};
 

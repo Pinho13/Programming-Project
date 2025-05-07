@@ -1,5 +1,4 @@
 #include "Command/Crop.hpp"
-#include "Command/Blank.hpp"
 #include "Image.hpp"
 #include "Color.hpp"
 #include <sstream>
@@ -8,18 +7,18 @@ namespace prog {
 
     namespace command {
 
-        Crop::Crop(int x, int y, int w, int h): Command("crop"), x_(x), y_(y), w_(w), h_(h) {}
+        Crop::Crop(int x, int y, int w, int h): Command("Crop"), x_(x), y_(y), w_(w), h_(h) {}
 
         Crop::~Crop() {};
         
         Image *Crop::apply(Image *img){
 
-            //Creates a new image with the given dimensions
+            // Creates a new image with the given dimensions
             Image *new_img =  new Image{w_, h_};
             // Cycles throught each pixel of the new image
             for(int i = 0; i < w_; i++) {
                 for(int j = 0; j < h_; j++) {
-                    //Turns the pixel into the corresponding one of the old image
+                    // Turns the pixel into the corresponding one of the old image
                     Color &c_ = new_img->at(i, j);
                     c_ = img->at(i + x_, j + y_);
                 }

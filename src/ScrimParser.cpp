@@ -16,6 +16,7 @@
 #include "Command/Move.hpp"
 #include "Command/Crop.hpp"
 #include "Command/Resize.hpp"
+#include "Command/RotateLeft.hpp"
 #include "Logger.hpp"
 
 #include <fstream>
@@ -147,6 +148,10 @@ namespace prog {
             int x, y, w, h;
             input >> x >> y >> w >> h;
             return new command::Resize(x, y, w, h);
+        }
+
+        if (command_name == "rotate_left" ) {
+            return new command::RotateLeft();
         }
 
         // TODO: implement cases for the new commands

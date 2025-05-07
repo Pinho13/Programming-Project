@@ -18,7 +18,7 @@ namespace prog {
                 for(int j = 0; j < img->height(); j++) {
                     //Turns all color1 pixels to color2 
                     Color &c_ = img->at(i, j);
-                    if (c_.red() == color1_.red() and c_.green() == color1_.green() and c_.blue() == color1_.blue()) {
+                    if (c_.red() == color1_.red() && c_.green() == color1_.green() && c_.blue() == color1_.blue()) {
                         c_ = color2_;
                     }
                 }

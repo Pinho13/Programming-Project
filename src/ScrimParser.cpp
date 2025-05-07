@@ -13,6 +13,7 @@
 #include "Command/HMirror.hpp"
 #include "Command/VMirror.hpp"
 #include "Command/Add.hpp"
+#include "Command/Move.hpp"
 #include "Command/Crop.hpp"
 #include "Logger.hpp"
 
@@ -126,6 +127,13 @@ namespace prog {
             int x = 0, y = 0;
             input >> filename_ >> neutral_color >> x >> y;
             return new command::Add(filename_, neutral_color, x, y);
+        }
+        
+        if (command_name == "move") {
+            // Read information for move command
+            int x = 0, y = 0;
+            input >> x >> y;
+            return new command::Move(x, y);
         }
 
         if (command_name == "crop") {

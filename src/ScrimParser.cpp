@@ -13,6 +13,7 @@
 #include "Command/HMirror.hpp"
 #include "Command/VMirror.hpp"
 #include "Command/Add.hpp"
+#include "Command/Crop.hpp"
 #include "Logger.hpp"
 
 #include <fstream>
@@ -125,6 +126,12 @@ namespace prog {
             int x = 0, y = 0;
             input >> filename_ >> neutral_color >> x >> y;
             return new command::Add(filename_, neutral_color, x, y);
+        }
+
+        if (command_name == "crop") {
+            int x, y, w, h;
+            input >> x >> y >> w >> h;
+            return new command::Crop(x, y, w, h);
         }
 
         // TODO: implement cases for the new commands

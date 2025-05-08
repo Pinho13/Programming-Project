@@ -19,6 +19,7 @@
 #include "Command/Resize.hpp"
 #include "Command/RotateLeft.hpp"
 #include "Command/RotateRight.hpp"
+#include "Command/Scaleup.hpp"
 #include "Logger.hpp"
 
 #include <fstream>
@@ -167,6 +168,12 @@ namespace prog {
 
         if (command_name == "rotate_right") {
             return new command::RotateRight();
+        }
+
+        if (command_name == "scaleup") {
+            int x, y;
+            input >> x >> y;
+            return new command::Scaleup(x, y);
         }
         // TODO: implement cases for the new commands
 

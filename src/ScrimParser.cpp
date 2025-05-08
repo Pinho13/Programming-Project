@@ -14,6 +14,7 @@
 #include "Command/VMirror.hpp"
 #include "Command/Add.hpp"
 #include "Command/Move.hpp"
+#include "Command/Slide.hpp"
 #include "Command/Crop.hpp"
 #include "Logger.hpp"
 
@@ -99,6 +100,7 @@ namespace prog {
         }
 
         if (command_name == "replace") {
+            // Read information for replace command
             Color color1, color2;
             input >> color1 >> color2;
             return new command::Replace(color1, color2);
@@ -136,7 +138,15 @@ namespace prog {
             return new command::Move(x, y);
         }
 
+        if (command_name == "slide") {
+            // Read information for slide command
+            int x = 0, y = 0;
+            input >> x >> y;
+            return new command::Slide(x, y);
+        }
+
         if (command_name == "crop") {
+            // Read information for crop command
             int x, y, w, h;
             input >> x >> y >> w >> h;
             return new command::Crop(x, y, w, h);

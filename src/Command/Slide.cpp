@@ -15,6 +15,7 @@ namespace prog {
             for (int i = 0; i < img->width(); i++) {
                 for (int j = 0; j < img->height(); j++) {
                     Color& c_ = img->at(i, j);
+                    // Check if the pixels accessed are within boundaries
                     if (i + x_ < img->width()) {
                         Color& new_c = img->at(i + x_, j);
                         Color temp = new_c;
@@ -28,6 +29,7 @@ namespace prog {
             for (int i = 0; i < img->width(); i++) {
                 for (int j = 0; j < img->height(); j++) {
                     Color& c_ = img->at(i, j);
+                    // Check if the pixels accessed are within boundaries
                     if (j + y_ < img->height()) {
                         Color& new_c = img->at(i, j + y_);
                         Color temp = new_c;

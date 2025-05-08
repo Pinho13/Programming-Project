@@ -16,6 +16,9 @@
 #include "Command/Move.hpp"
 #include "Command/Slide.hpp"
 #include "Command/Crop.hpp"
+#include "Command/Resize.hpp"
+#include "Command/RotateLeft.hpp"
+#include "Command/RotateRight.hpp"
 #include "Logger.hpp"
 
 #include <fstream>
@@ -152,6 +155,19 @@ namespace prog {
             return new command::Crop(x, y, w, h);
         }
 
+        if (command_name == "resize") {
+            int x, y, w, h;
+            input >> x >> y >> w >> h;
+            return new command::Resize(x, y, w, h);
+        }
+
+        if (command_name == "rotate_left") {
+            return new command::RotateLeft();
+        }
+
+        if (command_name == "rotate_right") {
+            return new command::RotateRight();
+        }
         // TODO: implement cases for the new commands
 
         *Logger::err() << "Command not recognized: '" + command_name + "'\n";

@@ -6,7 +6,7 @@
 namespace prog {
     namespace command {
 
-        VMirror::VMirror() : Command("v_mirror") {}
+        VMirror::VMirror() : Command("VMirror") {}
 
         VMirror::~VMirror() {};
 

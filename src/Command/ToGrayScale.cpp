@@ -7,7 +7,7 @@ namespace prog {
 
     namespace command {
 
-        ToGrayScale::ToGrayScale() : Command("to_gray_scale") {}
+        ToGrayScale::ToGrayScale() : Command("ToGrayScale") {}
 
         ToGrayScale::~ToGrayScale() {};
 

@@ -6,7 +6,7 @@
 namespace prog {
     namespace command {
 
-        HMirror::HMirror() : Command("h_mirror") {}
+        HMirror::HMirror() : Command("HMirror") {}
 
         HMirror::~HMirror() {};
 

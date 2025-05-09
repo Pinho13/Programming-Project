@@ -2,6 +2,8 @@
 #include "Image.hpp"
 #include "Color.hpp"
 #include <sstream>
+#include "ScrimParser.hpp"
+#include "Scrim.hpp"
 
 namespace prog {
 
@@ -13,7 +15,21 @@ namespace prog {
 
         Image *Chain::apply(Image *img) {
 
-            // TODO
+            // Create parser
+            ScrimParser parser(true);
+
+            // Cycle through each scrim
+            for (string i : scrims_) {
+                Scrim *temp = parser.parseScrim(i);
+                // Check if pointer isn't null
+                if (temp != nullptr) {
+                    // Run Commands
+                    img = temp->run(img);
+                }
+                // Delete temporary variable
+                delete temp;
+            }
+
             return img;
         }
 

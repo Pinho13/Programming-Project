@@ -48,8 +48,19 @@ namespace prog {
         // Parse commands while there is input in the stream
         string command_name;
         while (input >> command_name) {
-            // If chaining scrims ignore saves/discards
-            if (chaining_ && (command_name == "save" || command_name == "open" || command_name == "blank")) { continue; }
+            // If chaining scrims, ignore saves/discards
+            if (chaining_ && (command_name == "save" || command_name == "open" || command_name == "blank")) { 
+                // Flushing the remaining inputs
+                if (command_name == "blank") {
+                    int w, h;
+                    Color fill;
+                    input >> w >> h >> fill;
+                } else {
+                    string filename;
+                    input >> filename;
+                }
+                continue; 
+            }
             
             Command *command = parse_command(command_name, input);
 
@@ -184,10 +195,10 @@ namespace prog {
             vector<string> scrims;
             string current;
             while (input >> current) {
-                scrims.push_back(current);
                 if (current == "end") {
                     break;
                 }
+                scrims.push_back(current);
             }
             return new command::Chain(scrims);
         }

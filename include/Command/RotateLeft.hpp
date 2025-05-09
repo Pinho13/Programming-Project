@@ -19,4 +19,4 @@ namespace prog {
     }
 }
 
-#endif
+#endif // PROJECT_ROTATELEFT_HPP

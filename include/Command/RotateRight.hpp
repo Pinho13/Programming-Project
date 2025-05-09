@@ -19,4 +19,4 @@ namespace prog {
     }
 }
 
-#endif
+#endif // PROJECT_ROTATERIGHT_HPP

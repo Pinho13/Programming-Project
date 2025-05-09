@@ -20,6 +20,7 @@
 #include "Command/RotateLeft.hpp"
 #include "Command/RotateRight.hpp"
 #include "Command/Scaleup.hpp"
+#include "Command/Chain.hpp"
 #include "Logger.hpp"
 
 #include <fstream>
@@ -33,7 +34,7 @@ using std::string;
 using std::vector;
 
 namespace prog {
-    ScrimParser::ScrimParser() {
+    ScrimParser::ScrimParser(bool chaining, vector<string> usedScrims) : chaining_(chaining), usedScrims_(usedScrims) {
     };
 
     ScrimParser::~ScrimParser() {
@@ -47,6 +48,20 @@ namespace prog {
         // Parse commands while there is input in the stream
         string command_name;
         while (input >> command_name) {
+            // If chaining scrims, ignore saves/discards
+            if (chaining_ && (command_name == "save" || command_name == "open" || command_name == "blank")) { 
+                // Flushing the remaining inputs
+                if (command_name == "blank") {
+                    int w, h;
+                    Color fill;
+                    input >> w >> h >> fill;
+                } else {
+                    string filename;
+                    input >> filename;
+                }
+                continue; 
+            }
+            
             Command *command = parse_command(command_name, input);
 
             if (command == nullptr) {
@@ -175,7 +190,18 @@ namespace prog {
             input >> x >> y;
             return new command::Scaleup(x, y);
         }
-        // TODO: implement cases for the new commands
+        
+        if (command_name == "chain") {
+            vector<string> scrims;
+            string current;
+            while (input >> current) {
+                if (current == "end") {
+                    break;
+                }
+                scrims.push_back(current);
+            }
+            return new command::Chain(scrims, usedScrims_);
+        }
 
         *Logger::err() << "Command not recognized: '" + command_name + "'\n";
         return nullptr;

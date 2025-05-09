@@ -3,11 +3,16 @@
 
 #include "Scrim.hpp"
 #include <iostream>
+#include <vector>
+#include <string>
+
+using std::vector;
+using std::string;
 
 namespace prog {
     class ScrimParser {
     public:
-        ScrimParser();
+        ScrimParser(bool chaining=false, vector<string> usedScrims = {});
 
         ~ScrimParser();
 
@@ -29,6 +34,9 @@ namespace prog {
         Scrim *parseScrim(const std::string &filename);
 
         Command *parse_command(std::string command_name, std::istream &istream);
+    private:
+        bool chaining_;
+        vector<string> usedScrims_;
     };
 }
 

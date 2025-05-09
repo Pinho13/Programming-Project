@@ -22,4 +22,4 @@ namespace prog {
 }
 
 
-#endif
+#endif // PROJECT_RESIZE_HPP

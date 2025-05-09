@@ -20,6 +20,7 @@
 #include "Command/RotateLeft.hpp"
 #include "Command/RotateRight.hpp"
 #include "Command/Scaleup.hpp"
+#include "Command/Chain.hpp"
 #include "Logger.hpp"
 
 #include <fstream>
@@ -175,7 +176,17 @@ namespace prog {
             input >> x >> y;
             return new command::Scaleup(x, y);
         }
-        // TODO: implement cases for the new commands
+        
+        if (command_name == "chain") {
+            vector<string> scrims;
+            string current;
+            while(input >> current) {
+                if(current.find("end") != string::npos) {
+                    break;
+                }
+            }
+            return new command::Chain(scrims);
+        }
 
         *Logger::err() << "Command not recognized: '" + command_name + "'\n";
         return nullptr;

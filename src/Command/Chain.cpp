@@ -9,17 +9,24 @@ namespace prog {
 
     namespace command {
 
-        Chain::Chain(vector<string> scrims) : Command("Chain"), scrims_(scrims) {}
+        Chain::Chain(vector<string> scrims, vector<string> usedScrims) : Command("Chain"), scrims_(scrims), usedScrims_(usedScrims) {}
 
         Chain::~Chain() {};
 
         Image *Chain::apply(Image *img) {
 
+            // Add usedScrims_ and scrims
+            vector<string> usedScrims(usedScrims_);
+            usedScrims.insert(usedScrims.end(), scrims_.begin(), scrims_.end());
+
             // Create parser
-            ScrimParser parser(true);
+            ScrimParser parser(true, usedScrims);
 
             // Cycle through each scrim
             for (string i : scrims_) {
+                // Avoid used scrims
+                if (count(usedScrims_.begin(), usedScrims_.end(), i) > 0) { continue; }
+                // Create Scrim
                 Scrim *temp = parser.parseScrim(i);
                 // Check if pointer isn't null
                 if (temp != nullptr) {

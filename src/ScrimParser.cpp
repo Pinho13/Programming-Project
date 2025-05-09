@@ -34,7 +34,7 @@ using std::string;
 using std::vector;
 
 namespace prog {
-    ScrimParser::ScrimParser(bool chaining) : chaining_(chaining) {
+    ScrimParser::ScrimParser(bool chaining, vector<string> usedScrims) : chaining_(chaining), usedScrims_(usedScrims) {
     };
 
     ScrimParser::~ScrimParser() {
@@ -200,7 +200,7 @@ namespace prog {
                 }
                 scrims.push_back(current);
             }
-            return new command::Chain(scrims);
+            return new command::Chain(scrims, usedScrims_);
         }
 
         *Logger::err() << "Command not recognized: '" + command_name + "'\n";

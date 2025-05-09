@@ -5,6 +5,7 @@
 #include "Color.hpp"
 #include <vector>
 #include <string>
+#include <algorithm>
 
 using std::vector;
 using std::string;
@@ -13,7 +14,7 @@ namespace prog {
     namespace command {
         class Chain : public Command {
         public:
-            Chain(vector<string> scrims);
+            Chain(vector<string> scrims, vector<string> usedScrims = {});
 
             ~Chain();
 
@@ -23,6 +24,7 @@ namespace prog {
 
         private:
             vector<string> scrims_;
+            vector<string> usedScrims_;
         };
     }
 }

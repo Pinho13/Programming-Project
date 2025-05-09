@@ -15,7 +15,7 @@ namespace prog {
 
             // Creates a new image considering the scaling factors
             Image *new_img =  new Image{img->width() * x_factor_, img->height() * y_factor_};
-            // // Cycles throught each pixel of the old image
+            // // Cycles through each pixel of the old image
             for(int i = 0; i < img->width(); i++) {
                 for(int j = 0; j < img->height(); j++) {
                     Color c_ = img->at(i, j);

@@ -22,7 +22,7 @@ namespace prog {
             std::string toString() const override;
 
         private:
-            vector<string> scrims;
+            vector<string> scrims_;
         };
     }
 }

@@ -34,7 +34,7 @@ using std::string;
 using std::vector;
 
 namespace prog {
-    ScrimParser::ScrimParser() {
+    ScrimParser::ScrimParser(bool chaining) : chaining_(chaining) {
     };
 
     ScrimParser::~ScrimParser() {
@@ -48,6 +48,9 @@ namespace prog {
         // Parse commands while there is input in the stream
         string command_name;
         while (input >> command_name) {
+            // If chaining scrims ignore saves/discards
+            if (chaining_ && (command_name == "save" || command_name == "open" || command_name == "blank")) { continue; }
+            
             Command *command = parse_command(command_name, input);
 
             if (command == nullptr) {
@@ -180,8 +183,9 @@ namespace prog {
         if (command_name == "chain") {
             vector<string> scrims;
             string current;
-            while(input >> current) {
-                if(current.find("end") != string::npos) {
+            while (input >> current) {
+                scrims.push_back(current);
+                if (current == "end") {
                     break;
                 }
             }

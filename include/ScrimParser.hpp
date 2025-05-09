@@ -7,7 +7,7 @@
 namespace prog {
     class ScrimParser {
     public:
-        ScrimParser();
+        ScrimParser(bool chaining=false);
 
         ~ScrimParser();
 
@@ -29,6 +29,8 @@ namespace prog {
         Scrim *parseScrim(const std::string &filename);
 
         Command *parse_command(std::string command_name, std::istream &istream);
+    private:
+        bool chaining_;
     };
 }
 

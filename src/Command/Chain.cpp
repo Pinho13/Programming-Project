@@ -2,8 +2,10 @@
 #include "Image.hpp"
 #include "Color.hpp"
 #include <sstream>
+#include <algorithm>
 #include "ScrimParser.hpp"
 #include "Scrim.hpp"
+#include "Logger.hpp"
 
 namespace prog {
 
@@ -20,7 +22,7 @@ namespace prog {
             usedScrims.insert(usedScrims.end(), scrims_.begin(), scrims_.end());
 
             // Create parser
-            ScrimParser parser(true, usedScrims);
+            ScrimParser parser(usedScrims);
 
             // Cycle through each scrim
             for (string i : scrims_) {
@@ -28,12 +30,13 @@ namespace prog {
                 if (count(usedScrims_.begin(), usedScrims_.end(), i) > 0) { continue; }
                 // Create Scrim
                 Scrim *temp = parser.parseScrim(i);
+                
                 // Check if pointer isn't null
                 if (temp != nullptr) {
                     // Run Commands
-                    img = temp->run(img);
+                    img = run(img, temp->getCommands());
                 }
-                // Delete temporary variable
+                // Delete temp scrim
                 delete temp;
             }
 
@@ -49,6 +52,17 @@ namespace prog {
             }
             ss << name() << result;
             return ss.str();
+        }
+
+        Image *Chain::run(Image *img, vector<Command *> commands) {
+            for (Command *c: commands) {
+                // Skip save, open and blank commands
+                if (c->name() == "Save" || c->name() == "Open" || c->name() == "Blank") { continue; }
+                *Logger::out() << "Applying command '" << c->toString() << "'\n";
+                img = c->apply(img);
+            }
+
+            return img;
         }
 
     }

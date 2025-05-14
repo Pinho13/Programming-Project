@@ -12,7 +12,7 @@ using std::string;
 namespace prog {
     class ScrimParser {
     public:
-        ScrimParser(bool chaining=false, vector<string> usedScrims = {});
+        ScrimParser(vector<string> usedScrims = {});
 
         ~ScrimParser();
 
@@ -35,7 +35,6 @@ namespace prog {
 
         Command *parse_command(std::string command_name, std::istream &istream);
     private:
-        bool chaining_;
         vector<string> usedScrims_;
     };
 }

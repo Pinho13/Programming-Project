@@ -25,6 +25,7 @@ namespace prog {
         private:
             vector<string> scrims_;
             vector<string> usedScrims_;
+            Image *run(Image *img, vector<Command *> commands);
         };
     }
 }

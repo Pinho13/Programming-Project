@@ -34,7 +34,7 @@ using std::string;
 using std::vector;
 
 namespace prog {
-    ScrimParser::ScrimParser(bool chaining, vector<string> usedScrims) : chaining_(chaining), usedScrims_(usedScrims) {
+    ScrimParser::ScrimParser(vector<string> usedScrims) : usedScrims_(usedScrims) {
     };
 
     ScrimParser::~ScrimParser() {
@@ -48,20 +48,7 @@ namespace prog {
         // Parse commands while there is input in the stream
         string command_name;
         while (input >> command_name) {
-            // If chaining scrims, ignore saves/discards
-            if (chaining_ && (command_name == "save" || command_name == "open" || command_name == "blank")) { 
-                // Flushing the remaining inputs
-                if (command_name == "blank") {
-                    int w, h;
-                    Color fill;
-                    input >> w >> h >> fill;
-                } else {
-                    string filename;
-                    input >> filename;
-                }
-                continue; 
-            }
-            
+                        
             Command *command = parse_command(command_name, input);
 
             if (command == nullptr) {

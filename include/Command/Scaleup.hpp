@@ -4,9 +4,12 @@
 #include "Command.hpp"
 #include <string>
 
-namespace prog {
-    namespace command {
-        class Scaleup : public Command {
+namespace prog
+{
+    namespace command
+    {
+        class Scaleup : public Command
+        {
         public:
             Scaleup(int x_factor, int y_factor);
 

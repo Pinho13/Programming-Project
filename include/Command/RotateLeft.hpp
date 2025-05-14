@@ -4,17 +4,20 @@
 #include "Command.hpp"
 #include <string>
 
-namespace prog {
-    namespace command {
-        class RotateLeft : public Command {
-            public:
-                RotateLeft();
+namespace prog
+{
+    namespace command
+    {
+        class RotateLeft : public Command
+        {
+        public:
+            RotateLeft();
 
-                ~RotateLeft();
+            ~RotateLeft();
 
-                Image *apply(Image *img) override;
+            Image *apply(Image *img) override;
 
-                std::string toString() const override;
+            std::string toString() const override;
         };
     }
 }

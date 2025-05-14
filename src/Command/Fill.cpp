@@ -3,29 +3,34 @@
 #include "Color.hpp"
 #include <sstream>
 
-namespace prog {
+namespace prog
+{
 
-    namespace command {
-        Fill::Fill(int x, int y, int w, int h,  Color& filling_color) : Command("Fill"), x(x), y(y), w(w), h(h), filling_color(filling_color) {}
+    namespace command
+    {
+        Fill::Fill(int x, int y, int w, int h, Color &filling_color) : Command("Fill"), x(x), y(y), w(w), h(h), filling_color(filling_color) {}
 
         Fill::~Fill() {};
 
-        Image *Fill::apply(Image *img) {
+        Image *Fill::apply(Image *img)
+        {
 
             // Cycles through each rectangle pixel
-            for (int i = x; i < x + w; i++) {
-                for (int j = y; j < y + h; j++) {
+            for (int i = x; i < x + w; i++)
+            {
+                for (int j = y; j < y + h; j++)
+                {
                     // Fill in the rectangle with the desired color
                     Color &c_ = img->at(i, j);
                     c_ = filling_color;
                 }
             }
-            
+
             return img;
         }
 
-
-        std::string Fill::toString() const {
+        std::string Fill::toString() const
+        {
             std::ostringstream ss;
             ss << name() << " x:" << x << " y:" << y << " w:" << w << " h:" << h << " filling_color:" << filling_color;
             return ss.str();

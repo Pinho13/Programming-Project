@@ -6,13 +6,14 @@
 #include <string>
 #include <fstream>
 
-namespace prog {
-    class Scrim {
+namespace prog
+{
+    class Scrim
+    {
     public:
         Scrim(std::vector<Command *> &commands);
 
         ~Scrim();
-
 
         /**
          * Runs this pipeline starting with the given image.
@@ -46,4 +47,3 @@ namespace prog {
     };
 }
 #endif
-

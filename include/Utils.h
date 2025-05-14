@@ -7,7 +7,8 @@
 
 #include <string>
 
-namespace prog {
+namespace prog
+{
     /**
      * Ensures the folder with the given name exists.
      *
@@ -25,4 +26,4 @@ namespace prog {
     bool delete_files(const std::string &string);
 }
 
-#endif //UTILS_H
+#endif // UTILS_H

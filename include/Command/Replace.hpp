@@ -4,9 +4,12 @@
 #include "Command.hpp"
 #include "string"
 
-namespace prog {
-    namespace command {
-        class Replace : public Command {
+namespace prog
+{
+    namespace command
+    {
+        class Replace : public Command
+        {
         public:
             Replace(Color color1, Color color2);
 
@@ -15,11 +18,11 @@ namespace prog {
             Image *apply(Image *img) override;
 
             std::string toString() const override;
-            
+
         private:
             Color color1_;
             Color color2_;
         };
     }
 }
-#endif //PROJECT_REPLACE_HPP
+#endif // PROJECT_REPLACE_HPP

@@ -7,12 +7,15 @@
 #include <string>
 #include <algorithm>
 
-using std::vector;
 using std::string;
+using std::vector;
 
-namespace prog {
-    namespace command {
-        class Chain : public Command {
+namespace prog
+{
+    namespace command
+    {
+        class Chain : public Command
+        {
         public:
             Chain(vector<string> scrims);
 
@@ -31,4 +34,4 @@ namespace prog {
         };
     }
 }
-#endif //PROJECT_CHAIN_HPP
+#endif // PROJECT_CHAIN_HPP

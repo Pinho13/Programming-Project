@@ -9,17 +9,20 @@
 
 namespace fs = std::filesystem;
 
-namespace prog {
+namespace prog
+{
 
-    namespace command {
+    namespace command
+    {
 
-        Save::Save(std::string filename) : Command("Save"), filename(filename) {
-
+        Save::Save(std::string filename) : Command("Save"), filename(filename)
+        {
         }
 
         Save::~Save() {}
 
-        Image *Save::apply(Image *img) {
+        Image *Save::apply(Image *img)
+        {
 
             // Ensure folder exists before writing file
             fs::path filepath(filename);
@@ -30,7 +33,8 @@ namespace prog {
             return img;
         }
 
-        std::string Save::toString() const {
+        std::string Save::toString() const
+        {
             std::ostringstream ss;
             ss << name() << " filename:" << filename;
             return ss.str();

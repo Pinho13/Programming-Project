@@ -8,9 +8,12 @@
 #include "Command.hpp"
 #include <string>
 
-namespace prog {
-    namespace command {
-        class Save : public Command {
+namespace prog
+{
+    namespace command
+    {
+        class Save : public Command
+        {
         public:
             Save(std::string filename);
 
@@ -26,5 +29,4 @@ namespace prog {
     }
 }
 
-
-#endif //PROJECT_SAVE_HPP
+#endif // PROJECT_SAVE_HPP

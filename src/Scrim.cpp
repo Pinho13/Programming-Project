@@ -6,19 +6,25 @@
 
 using prog::Command;
 
-namespace prog {
-    Scrim::Scrim(std::vector<Command *> &commands) : commands(commands) {
+namespace prog
+{
+    Scrim::Scrim(std::vector<Command *> &commands) : commands(commands)
+    {
     }
 
-    Scrim::~Scrim() {
+    Scrim::~Scrim()
+    {
         // Deallocate each command
-        for (Command *c: commands) {
+        for (Command *c : commands)
+        {
             delete c;
         }
     };
 
-    Image *Scrim::run(Image *img) {
-        for (Command *c: commands) {
+    Image *Scrim::run(Image *img)
+    {
+        for (Command *c : commands)
+        {
             *Logger::out() << "Applying command '" << c->toString() << "'\n";
             img = c->apply(img);
         }
@@ -26,11 +32,13 @@ namespace prog {
         return img;
     }
 
-    Image *Scrim::run() {
+    Image *Scrim::run()
+    {
         return this->run(nullptr);
     }
 
-    std::vector<Command *> Scrim::getCommands() const {
+    std::vector<Command *> Scrim::getCommands() const
+    {
         return commands;
     }
 }

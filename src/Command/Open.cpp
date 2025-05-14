@@ -7,14 +7,17 @@
 #include <cstdlib>
 #include <sstream>
 
-namespace prog {
+namespace prog
+{
 
-    namespace command {
+    namespace command
+    {
         Open::Open(std::string filename) : Command("Open"), filename(filename) {}
 
         Open::~Open() {};
 
-        Image *Open::apply(Image *img) {
+        Image *Open::apply(Image *img)
+        {
             // Dispose of previous image
             delete img;
 
@@ -22,7 +25,8 @@ namespace prog {
             // img = loadFromPNG("../"+filename);
             img = loadFromPNG(filename);
 
-            if (!img) {
+            if (!img)
+            {
                 *Logger::err() << "Could not open file " << filename << "\n";
                 std::exit(1);
             }
@@ -30,7 +34,8 @@ namespace prog {
             return img;
         }
 
-        std::string Open::toString() const {
+        std::string Open::toString() const
+        {
             std::ostringstream ss;
             ss << name() << " filename:" << filename;
             return ss.str();

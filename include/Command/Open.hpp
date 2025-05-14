@@ -8,9 +8,12 @@
 #include "Command.hpp"
 #include <string>
 
-namespace prog {
-    namespace command {
-        class Open : public Command {
+namespace prog
+{
+    namespace command
+    {
+        class Open : public Command
+        {
         public:
             Open(std::string filename);
 
@@ -26,5 +29,4 @@ namespace prog {
     }
 }
 
-
-#endif //PROJECT_OPEN_HPP
+#endif // PROJECT_OPEN_HPP

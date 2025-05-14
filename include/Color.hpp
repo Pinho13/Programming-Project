@@ -3,10 +3,12 @@
 
 #include <iostream>
 
-namespace prog {
+namespace prog
+{
     typedef unsigned char rgb_value;
 
-    class Color {
+    class Color
+    {
     private:
         rgb_value r_, g_, b_;
 
@@ -34,6 +36,5 @@ namespace prog {
 std::istream &operator>>(std::istream &input, prog::Color &c);
 
 std::ostream &operator<<(std::ostream &output, const prog::Color &c);
-
 
 #endif

@@ -4,9 +4,12 @@
 #include "Command.hpp"
 #include <string>
 
-namespace prog {
-    namespace command {
-        class Add : public Command {
+namespace prog
+{
+    namespace command
+    {
+        class Add : public Command
+        {
         public:
             Add(std::string filename_, Color neutral_color, int x, int y);
 
@@ -23,6 +26,5 @@ namespace prog {
         };
     }
 }
-
 
 #endif // PROJECT_ADD_HPP

@@ -6,16 +6,17 @@
 #include <vector>
 #include <string>
 
-using std::vector;
 using std::string;
+using std::vector;
 
-namespace prog {
-    class ScrimParser {
+namespace prog
+{
+    class ScrimParser
+    {
     public:
         ScrimParser();
 
         ~ScrimParser();
-
 
         /**
          * Base method that parses an input script, from a generic input stream.
@@ -37,4 +38,4 @@ namespace prog {
     };
 }
 
-#endif //PROJECT_SCRIPTPARSER_H
+#endif // PROJECT_SCRIPTPARSER_H

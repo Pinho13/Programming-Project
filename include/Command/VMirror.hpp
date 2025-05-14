@@ -4,9 +4,12 @@
 #include "Command.hpp"
 #include <string>
 
-namespace prog {
-    namespace command {
-        class VMirror : public Command {
+namespace prog
+{
+    namespace command
+    {
+        class VMirror : public Command
+        {
         public:
             VMirror();
 

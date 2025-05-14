@@ -4,9 +4,12 @@
 #include "Command.hpp"
 #include <string>
 
-namespace prog {
-    namespace command {
-        class Move : public Command {
+namespace prog
+{
+    namespace command
+    {
+        class Move : public Command
+        {
         public:
             Move(int x_, int y_);
 

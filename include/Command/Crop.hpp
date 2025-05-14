@@ -4,9 +4,12 @@
 #include "Command.hpp"
 #include <string>
 
-namespace prog {
-    namespace command {
-        class Crop : public Command {
+namespace prog
+{
+    namespace command
+    {
+        class Crop : public Command
+        {
         public:
             Crop(int x, int y, int w, int h);
 
@@ -15,7 +18,7 @@ namespace prog {
             Image *apply(Image *img) override;
 
             std::string toString() const override;
-            
+
         private:
             int x_, y_, w_, h_;
         };

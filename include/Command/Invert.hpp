@@ -4,9 +4,12 @@
 #include "Command.hpp"
 #include <string>
 
-namespace prog {
-    namespace command {
-        class Invert : public Command {
+namespace prog
+{
+    namespace command
+    {
+        class Invert : public Command
+        {
         public:
             Invert();
 
@@ -15,10 +18,8 @@ namespace prog {
             Image *apply(Image *img) override;
 
             std::string toString() const override;
-
         };
     }
 }
-
 
 #endif // PROJECT_INVERT_HPP

@@ -8,9 +8,12 @@
 #include "Command.hpp"
 #include "Color.hpp"
 
-namespace prog {
-    namespace command {
-        class Blank : public Command {
+namespace prog
+{
+    namespace command
+    {
+        class Blank : public Command
+        {
         public:
             Blank(int w, int h, Color &fill);
 
@@ -27,4 +30,4 @@ namespace prog {
         };
     }
 }
-#endif //PROJECT_BLANK_HPP
+#endif // PROJECT_BLANK_HPP

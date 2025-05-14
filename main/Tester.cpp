@@ -28,12 +28,14 @@ static const string SCRIMS_FOLDER = "scrims";
 static const string OUTPUT_FOLDER = "output";
 static const string EXPECTED_FOLDER = "expected";
 
-
-namespace prog {
-  class TestDriver {
+namespace prog
+{
+  class TestDriver
+  {
   public:
     explicit TestDriver(const string &root_path)
-      : root_path(root_path) {
+        : root_path(root_path)
+    {
       string output_folder = root_path + "/" + OUTPUT_FOLDER;
 
       // Ensure output folder exists
@@ -50,7 +52,8 @@ namespace prog {
     int failed_tests = 0;
     std::ofstream logfile = std::ofstream("test_log.txt");
 
-    bool test_script(const string &id) {
+    bool test_script(const string &id)
+    {
       string scrim_file = root_path + "/" + SCRIMS_FOLDER + "/" + id + ".scrim";
       string out_file = root_path + "/" + OUTPUT_FOLDER + "/" + id + ".png";
       string exp_file = root_path + "/" + EXPECTED_FOLDER + "/" + id + ".png";
@@ -59,20 +62,22 @@ namespace prog {
       ScrimParser parser;
       Scrim *scrim = parser.parseScrim(scrim_file); // get Scrim
 
-      if (!scrim) {
+      if (!scrim)
+      {
         Logger::log("Scrim parse failed");
         return false;
       }
 
-      prog::Image* img = scrim->run(); // run Scrim
+      prog::Image *img = scrim->run(); // run Scrim
 
       delete scrim; // Dispose of scrim
-      delete img; // Dispose of the image
+      delete img;   // Dispose of the image
 
       return comparePNG(exp_file, out_file);
     }
 
-    void onTestBegin(const string &id) {
+    void onTestBegin(const string &id)
+    {
       total_tests++;
 
       *Logger::out() << '[' << total_tests << "] " << id << ": ";
@@ -82,18 +87,23 @@ namespace prog {
       *Logger::out() << ">>> " << '[' << total_tests << "] " << id << " <<<\n";
     }
 
-    void onTestCompletion(bool success) {
+    void onTestCompletion(bool success)
+    {
       Logger::setOStream(std::cout);
       Logger::setEStream(std::cerr);
       *Logger::out() << (success ? "pass" : "fail") << std::endl;
-      if (success) {
+      if (success)
+      {
         passed_tests++;
-      } else {
+      }
+      else
+      {
         failed_tests++;
       }
     }
 
-    void run_test(const string &script_id) {
+    void run_test(const string &script_id)
+    {
       onTestBegin(script_id);
 
       const bool success = test_script(script_id);
@@ -102,7 +112,8 @@ namespace prog {
     }
 
   public:
-    static void color_tests() {
+    static void color_tests()
+    {
       const Color a(1, 2, 3);
       assert(a.red() == 1);
       assert(a.green() == 2);
@@ -128,32 +139,38 @@ namespace prog {
       *Logger::out() << "Color tests passed!" << std::endl;
     }
 
-    void test_scrims(const string &spec) {
+    void test_scrims(const string &spec)
+    {
       const fs::path dir_path = root_path + "/" + SCRIMS_FOLDER;
 
-
-      if (!fs::is_directory(dir_path)) {
+      if (!fs::is_directory(dir_path))
+      {
         *Logger::err() << "Unable to open scrims directory (" << (root_path + "/" + SCRIMS_FOLDER) << ")!" << std::endl;
         return;
       }
 
       vector<string> scrims_to_execute;
 
-      for (const auto &entry: fs::directory_iterator(dir_path)) {
+      for (const auto &entry : fs::directory_iterator(dir_path))
+      {
         // Not a regular file, ignore (
-        if (!entry.is_regular_file()) {
+        if (!entry.is_regular_file())
+        {
           continue;
         }
 
         // If given pattern is not in filename, ignore file
         string fname = entry.path().filename().string();
-        if (fname.find(spec) == string::npos) {
+        if (fname.find(spec) == string::npos)
+        {
           continue;
         }
 
         // Normalize path
-        for (char &ch: fname) {
-          if (ch == '\\') {
+        for (char &ch : fname)
+        {
+          if (ch == '\\')
+          {
             ch = '/';
           }
         }
@@ -164,33 +181,39 @@ namespace prog {
         // std::cout << "Adding file " << scrim<< " from '" << entry << "'\n";
       }
 
-      if (scrims_to_execute.empty()) {
+      if (scrims_to_execute.empty())
+      {
         *Logger::out() << "No scrims matched the spec: " << spec << std::endl;
         return;
       }
       sort(scrims_to_execute.begin(), scrims_to_execute.end());
 
       *Logger::out() << "== " << scrims_to_execute.size() << " tests to execute  ==" << std::endl;
-      for (const string &id: scrims_to_execute) {
+      for (const string &id : scrims_to_execute)
+      {
         run_test(id);
       }
 
       *Logger::out() << "== TEST EXECUTION SUMMARY ==" << std::endl
-          << "Total tests: " << total_tests << std::endl
-          << "Passed tests: " << passed_tests << std::endl
-          << "Failed tests: " << failed_tests << std::endl;
+                     << "Total tests: " << total_tests << std::endl
+                     << "Passed tests: " << passed_tests << std::endl
+                     << "Failed tests: " << failed_tests << std::endl;
     }
   };
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
   --argc;
   ++argv;
   prog::TestDriver driver(argc == 2 ? argv[1] : ".");
   string spec = argc >= 1 ? argv[0] : "";
-  if (spec == "Color") {
+  if (spec == "Color")
+  {
     prog::TestDriver::color_tests();
-  } else {
+  }
+  else
+  {
     driver.test_scrims(spec);
   }
   return 0;

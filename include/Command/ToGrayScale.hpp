@@ -4,9 +4,12 @@
 #include "Command.hpp"
 #include "string"
 
-namespace prog {
-    namespace command {
-        class ToGrayScale : public Command {
+namespace prog
+{
+    namespace command
+    {
+        class ToGrayScale : public Command
+        {
         public:
             ToGrayScale();
 
@@ -18,4 +21,4 @@ namespace prog {
         };
     }
 }
-#endif //PROJECT_TOGRAYSCALE_HPP
+#endif // PROJECT_TOGRAYSCALE_HPP

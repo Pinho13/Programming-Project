@@ -4,9 +4,12 @@
 #include "Command.hpp"
 #include <string>
 
-namespace prog {
-    namespace command {
-        class Slide : public Command {
+namespace prog
+{
+    namespace command
+    {
+        class Slide : public Command
+        {
         public:
             Slide(int x_, int y_);
 

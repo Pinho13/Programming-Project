@@ -4,11 +4,14 @@
 #include "Command.hpp"
 #include "string"
 
-namespace prog {
-    namespace command {
-        class Fill : public Command {
+namespace prog
+{
+    namespace command
+    {
+        class Fill : public Command
+        {
         public:
-            Fill(int x, int y, int w, int h, Color& filling_color);
+            Fill(int x, int y, int w, int h, Color &filling_color);
 
             ~Fill();
 
@@ -16,10 +19,10 @@ namespace prog {
 
             std::string toString() const override;
 
-        private: 
+        private:
             int x, y, w, h;
             Color filling_color;
         };
     }
 }
-#endif //PROJECT_FILL_HPP
+#endif // PROJECT_FILL_HPP

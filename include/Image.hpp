@@ -4,13 +4,15 @@
 #include "Color.hpp"
 #include <vector>
 
-namespace prog {
-    class Image {
+namespace prog
+{
+    class Image
+    {
     private:
         int w_, h_;
         Color **matrix; // matrix[w_, h_]
-    
-	public:
+
+    public:
         Image(int w, int h, const Color &fill = {255, 255, 255});
 
         ~Image();

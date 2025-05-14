@@ -9,11 +9,12 @@
 
 #include <string>
 
-namespace prog {
+namespace prog
+{
     //    namespace command {
 
-
-    class Command {
+    class Command
+    {
     public:
         Command(std::string command_name);
 
@@ -43,5 +44,4 @@ namespace prog {
 
 std::ostream &operator<<(std::ostream &output, const prog::Command &command);
 
-
-#endif //PROJECT_COMMAND_HPP
+#endif // PROJECT_COMMAND_HPP

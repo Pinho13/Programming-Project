@@ -1,6 +1,7 @@
 #include "Command/Scaleup.hpp"
 #include "Image.hpp"
 #include "Color.hpp"
+#include "Command/Fill.hpp"
 #include <sstream>
 
 namespace prog {
@@ -15,17 +16,13 @@ namespace prog {
 
             // Creates a new image considering the scaling factors
             Image *new_img =  new Image{img->width() * x_factor_, img->height() * y_factor_};
-            // // Cycles through each pixel of the old image
+            // Cycles through each pixel of the old image
             for(int i = 0; i < img->width(); i++) {
                 for(int j = 0; j < img->height(); j++) {
                     Color c_ = img->at(i, j);
                     // Fills the new image with the scaled up pixels of the old image
-                    for (int k = i * x_factor_; k < i * x_factor_ + x_factor_; k++) {
-                        for (int l = j * y_factor_; l < j * y_factor_ + y_factor_; l++) {
-                            Color &new_c_ = new_img->at(k, l);
-                            new_c_ = c_;
-                        }
-                    }
+                    Fill color_fill(i * x_factor_, j * y_factor_, x_factor_, y_factor_, c_);
+                    new_img = color_fill.apply(new_img);
                 }
             }
             delete img;

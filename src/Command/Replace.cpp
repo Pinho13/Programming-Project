@@ -16,7 +16,7 @@ namespace prog {
             // Cycles throught each pixel
             for(int i = 0; i < img->width(); i++) {
                 for(int j = 0; j < img->height(); j++) {
-                    //Turns all color1 pixels to color2 
+                    // Turns all color1 pixels to color2 
                     Color &c_ = img->at(i, j);
                     if (c_.red() == color1_.red() && c_.green() == color1_.green() && c_.blue() == color1_.blue()) {
                         c_ = color2_;

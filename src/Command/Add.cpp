@@ -12,20 +12,20 @@ namespace prog {
         Add::~Add() {};
 
         Image *Add::apply(Image *img) {
-            // create instance of Open()
+            // Create instance of Open()
             prog::command::Open open_object(filename_);
 
-            // open PNG image provided
+            // Open PNG image provided
             Image *png_image = open_object.apply(nullptr);
 
-            // copy the PNG image to the desired place
+            // Copy the PNG image to the desired place
             for (int i = 0; i < img->width() && i < png_image->width(); i++) {
                 for (int j = 0; j < img->height() && j < png_image->height(); j++) {
                     // Check if the current position is within boundaries
                     if (i + x < img->width() && j + y < img->height())
                     {
                         Color& c_png = png_image->at(i, j);
-                        // Check if the currennt color from the PNG image is not neutral
+                        // Check if the current color from the PNG image is not neutral
                         if (!(c_png.red() == neutral_color.red() && c_png.green() == neutral_color.green() && c_png.blue() == neutral_color.blue()))
                         {
                             Color& c_ = img->at(i + x, j + y);

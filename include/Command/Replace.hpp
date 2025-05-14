@@ -15,6 +15,7 @@ namespace prog {
             Image *apply(Image *img) override;
 
             std::string toString() const override;
+            
         private:
             Color color1_;
             Color color2_;

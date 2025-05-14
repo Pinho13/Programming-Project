@@ -34,7 +34,7 @@ using std::string;
 using std::vector;
 
 namespace prog {
-    ScrimParser::ScrimParser(vector<string> usedScrims) : usedScrims_(usedScrims) {
+    ScrimParser::ScrimParser() {
     };
 
     ScrimParser::~ScrimParser() {
@@ -187,7 +187,7 @@ namespace prog {
                 }
                 scrims.push_back(current);
             }
-            return new command::Chain(scrims, usedScrims_);
+            return new command::Chain(scrims);
         }
 
         *Logger::err() << "Command not recognized: '" + command_name + "'\n";

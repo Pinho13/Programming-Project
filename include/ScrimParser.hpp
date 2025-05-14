@@ -12,7 +12,7 @@ using std::string;
 namespace prog {
     class ScrimParser {
     public:
-        ScrimParser(vector<string> usedScrims = {});
+        ScrimParser();
 
         ~ScrimParser();
 
@@ -34,8 +34,6 @@ namespace prog {
         Scrim *parseScrim(const std::string &filename);
 
         Command *parse_command(std::string command_name, std::istream &istream);
-    private:
-        vector<string> usedScrims_;
     };
 }
 

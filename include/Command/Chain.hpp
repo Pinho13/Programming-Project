@@ -14,11 +14,13 @@ namespace prog {
     namespace command {
         class Chain : public Command {
         public:
-            Chain(vector<string> scrims, vector<string> usedScrims = {});
+            Chain(vector<string> scrims);
 
             ~Chain();
 
             Image *apply(Image *img) override;
+
+            Image *apply(Image *img, vector<string> usedScrims);
 
             std::string toString() const override;
 

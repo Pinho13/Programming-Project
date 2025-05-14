@@ -11,18 +11,14 @@ namespace prog {
 
     namespace command {
 
-        Chain::Chain(vector<string> scrims, vector<string> usedScrims) : Command("Chain"), scrims_(scrims), usedScrims_(usedScrims) {}
+        Chain::Chain(vector<string> scrims) : Command("Chain"), scrims_(scrims) {}
 
         Chain::~Chain() {};
 
         Image *Chain::apply(Image *img) {
 
-            // Add usedScrims_ and scrims
-            vector<string> usedScrims(usedScrims_);
-            usedScrims.insert(usedScrims.end(), scrims_.begin(), scrims_.end());
-
             // Create parser
-            ScrimParser parser(usedScrims);
+            ScrimParser parser = ScrimParser();
 
             // Cycle through each scrim
             for (string i : scrims_) {
@@ -43,6 +39,10 @@ namespace prog {
             return img;
         }
 
+        Image *Chain::apply(Image *img, vector<string> usedScrims) {
+            usedScrims_.insert(usedScrims_.end(), usedScrims.begin(), usedScrims.end());
+            return apply(img);
+        }
 
         std::string Chain::toString() const {
             std::ostringstream ss;
@@ -58,6 +58,14 @@ namespace prog {
             for (Command *c: commands) {
                 // Skip save, open and blank commands
                 if (c->name() == "Save" || c->name() == "Open" || c->name() == "Blank") { continue; }
+                else if (c->name() == "Chain") {
+                    // Add usedScrims_ and scrims
+                    vector<string> allScrims(usedScrims_);
+                    allScrims.insert(allScrims.end(), scrims_.begin(), scrims_.end());
+                    // Call apply from child
+                    static_cast<Chain*>(c)->apply(img, allScrims);
+                    continue;
+                }
                 *Logger::out() << "Applying command '" << c->toString() << "'\n";
                 img = c->apply(img);
             }

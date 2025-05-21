@@ -49,6 +49,7 @@ namespace prog
 
         Image *Chain::apply(Image *img, vector<string> usedScrims)
         {
+            // Add used Scrims and apply
             usedScrims_.insert(usedScrims_.end(), usedScrims.begin(), usedScrims.end());
             return apply(img);
         }
@@ -67,6 +68,7 @@ namespace prog
 
         Image *Chain::run(Image *img, vector<Command *> commands)
         {
+            // Cycle through commands
             for (Command *c : commands)
             {
                 // Skip save, open and blank commands

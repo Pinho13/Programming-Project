@@ -7,6 +7,7 @@ namespace prog
     // Assigning the values
     w_ = w;
     h_ = h;
+    fill_ = fill;
     matrix = new Color *[w];
 
     for (int i = 0; i < w; i++)
@@ -54,5 +55,9 @@ namespace prog
   const Color &Image::at(int x, int y) const
   {
     return matrix[x][y];
+  }
+
+  Color Image::fill() const {
+    return fill_;
   }
 }

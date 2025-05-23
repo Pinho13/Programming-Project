@@ -17,7 +17,7 @@ namespace prog
         {
 
             // Creates a new image with the given dimensions
-            Image *new_img = new Image(w_, h_);
+            Image *new_img = new Image(w_, h_, img->fill());
             // Cycles throught each pixel of the new image
             for (int i = 0; i < w_; i++)
             {

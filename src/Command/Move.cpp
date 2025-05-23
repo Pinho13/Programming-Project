@@ -25,12 +25,12 @@ namespace prog
                     {
                         Color &new_c = img->at(i + x_, j + y_);
                         new_c = c_;
-                        c_ = Color(255, 255, 255);
+                        c_ = img->fill();
                     }
                     // Fill every pixel that was not changed but now is now to up or to the left of (x_, y_)
                     if (i < x_ || j < y_)
                     {
-                        c_ = Color(255, 255, 255);
+                        c_ = img->fill();
                     }
                 }
             }

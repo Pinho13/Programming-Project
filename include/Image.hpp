@@ -10,7 +10,7 @@ namespace prog
     {
     private:
         int w_, h_;
-        Color **matrix; // matrix[w_, h_]
+        Color **matrix, fill_; // matrix[w_, h_]
 
     public:
         Image(int w, int h, const Color &fill = {255, 255, 255});
@@ -24,6 +24,8 @@ namespace prog
         Color &at(int x, int y);
 
         const Color &at(int x, int y) const;
+
+        Color fill() const;
     };
 }
 #endif
